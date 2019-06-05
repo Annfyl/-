@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>鼠标</title>
+</head>
+
+<body>
+
+    <canvas id="myCanvas" height="1080px" width="1920px">
+
+    </canvas>
+    <div style="position: fixed;top: 0">
+        <h1>丑丑的鼠标残影</h1><br>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。
+            假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。
+            假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。
+            假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。
+        </p>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。</p>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。</p>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。</p>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。</p>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。</p>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。</p>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。</p>
+        <p>假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。假装是一段一段的文本。</p>
+
+
+
+
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    let mlocationX = []
+    let mlocationY = []
+
+    let x = 0
+    let y = 0
+
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+    document.onmousemove = function (e) {
+        x = e.pageX
+        y = e.pageY
+    }
+
+    /** 删除10以外的记录 */
+    function filter() {
+        for (var i = 0; i < mlocationX.length; i++) {
+            console.log(1)
+            draw(mlocationX[i], mlocationY[i])
+        }
+    }
+    function step(timestamp) {
+        draw(x, y)
+        clear()
+        clear()
+        window.requestAnimationFrame(step);
+    }
+
+    window.requestAnimationFrame(step);
+
+    function draw(x, y) {
+        ctx.fillStyle = '#FF0000';
+        /** 绘制残影 */
+        ctx.fillRect(x, y, 5, 5);
+    }
+
+    function clear() {
+        ctx.fillStyle = 'rgba(255,255,255,0.13)';
+        /** 绘制残影 */
+        ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    }
+</script>
